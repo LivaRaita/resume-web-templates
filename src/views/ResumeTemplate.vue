@@ -1,9 +1,9 @@
 <template>
   <div class="container">
     <section class="header">
-      <h1 contenteditable="true" placeholder="Full Name">
-        {{ fullName }}
-      </h1>
+      <h1 contenteditable="true" :placeholder="heading1.placeholder">{{
+        heading1.textContent
+      }}</h1>
       <h2 contenteditable="true" placeholder="Title"></h2>
       <div class="contacts">
         <a href="" contenteditable="true" placeholder="website"></a>
@@ -18,7 +18,7 @@
           class="short-description"
           contenteditable="true"
           placeholder="Add a short description (5-10 sentences) focusing on your experience and the
-        future carrier direction you're aiming for."
+				future carrier direction you're aiming for."
         ></p>
         <div class="experience">
           <h2>Experience</h2>
@@ -191,12 +191,15 @@
 // @ is an alias to /src
 
 export default {
+  name: "ResumeTemplate",
+  components: {},
   data() {
     return {
-      fullName: ""
+      heading1: {
+        textContent: "",
+        placeholder: "Full Name"
+      }
     };
-  },
-  name: "ResumeTemplate",
-  components: {}
+  }
 };
 </script>
