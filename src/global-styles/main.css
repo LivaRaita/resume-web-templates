@@ -1,0 +1,171 @@
+body {
+	font-family: Inter;
+	margin: 0;
+}
+
+nav {
+	height: 72px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 32px;
+}
+
+.save-button {
+	background: #108548;
+	border: 1px solid #217645;
+	border-radius: 4px;
+	color: white;
+	height: 30px;
+	padding: 0 16px;
+}
+
+.container {
+	margin: 3.5rem auto;
+	max-width: 700px;
+	min-width: 0;
+}
+
+*:focus {
+	outline: 0;
+}
+
+*[contenteditable][placeholder]:empty::before {
+	content: attr(placeholder);
+	color: #000;
+	cursor: text;
+}
+
+*[contenteditable][placeholder]:focus::before {
+	opacity: 20%;
+}
+
+.header {
+	margin-bottom: 1rem;
+}
+
+h1 {
+	font-size: 2rem;
+	font-weight: 700;
+}
+
+h2 {
+	font-size: 1.25rem;
+	font-weight: 700;
+	margin-bottom: 1rem;
+}
+
+h3 {
+	font-size: 1rem;
+	font-weight: 600;
+	margin: 0;
+}
+
+.contacts {
+	grid-auto-flow: column;
+	width: 100%;
+	column-gap: 1rem;
+}
+
+.contacts a {
+	font-size: 0.75rem;
+	font-weight: 500;
+	color: #646464;
+	text-decoration: none;
+}
+
+.contacts [contenteditable][placeholder]:empty::before {
+	color: #646464;
+}
+
+hr {
+	border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.content {
+	display: flex;
+}
+
+.affiliations {
+	display: flex;
+	flex-direction: column;
+	width: 70%;
+}
+
+p.date-location {
+	font-size: 0.75rem;
+	color: #646464;
+	margin-top: 0.4rem;
+}
+
+.date-location [contenteditable][placeholder]:empty::before {
+	color: #646464;
+}
+
+.position-wrapper {
+	padding-bottom: 1rem;
+}
+
+.position-header {
+	margin-bottom: 0.5rem;
+}
+
+p.position-description,
+p.short-description {
+	font-size: 0.75rem;
+	line-height: 160%;
+}
+
+.skills {
+	display: flex;
+	flex-direction: column;
+	margin-left: 3rem;
+	width: calc(30% - 3rem);
+}
+
+.category {
+	margin-bottom: 1rem;
+}
+
+.skill-groups {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.skill-group {
+	display: inline;
+	padding: 4px 8px;
+	background-color: #f9f9f9;
+	border-radius: 2px;
+	white-space: nowrap;
+	margin: 8px 8px 8px 0;
+	font-size: 0.75rem;
+	color: #646464;
+}
+
+.skill-groups [contenteditable][placeholder]:empty::before {
+	color: #646464;
+}
+
+@media (max-width: 768px) {
+	.header {
+		margin-left: 1rem;
+		margin-right: 1rem;
+	}
+
+	.content {
+		flex-direction: column;
+	}
+
+	.affiliations {
+		width: 100%;
+		margin-left: 1rem;
+		margin-right: 1rem;
+	}
+
+	.skills {
+		width: 100%;
+		margin-left: 1rem;
+		margin-right: 1rem;
+	}
+}
