@@ -1,9 +1,14 @@
 <template>
   <div class="container">
     <section class="header">
-      <h1 contenteditable="true" :placeholder="heading1.placeholder">{{
-        heading1.textContent
-      }}</h1>
+      <h1
+        contenteditable="true"
+        :placeholder="heading1.placeholder"
+        dir="auto"
+        v-html="heading1.innerText"
+        @keydown.enter.prevent
+        @blur="saveNewValue($event)"
+      ></h1>
       <h2 contenteditable="true" placeholder="Title"></h2>
       <div class="contacts">
         <a href="" contenteditable="true" placeholder="website"></a>
@@ -200,6 +205,18 @@ export default {
         placeholder: "Full Name"
       }
     };
+  },
+  methods: {
+    // onInput(event) {
+    //   this.innerText = event.target.innerText;
+    //   console.log("Text: %o", event.target.innerText);
+    // }
+    saveNewValue(e) {
+      console.log(e.target.innerText);
+      this.heading1.textContent = e.target.innerText;
+    }
   }
 };
+
+// TODO Try ref and refs
 </script>
