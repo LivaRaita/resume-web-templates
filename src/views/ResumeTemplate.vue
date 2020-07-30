@@ -5,17 +5,17 @@
         contenteditable="true"
         :placeholder="fullName.placeholder"
         dir="auto"
-        v-text="fullName.fullName"
+        v-text="fullName.text"
         @keydown.enter.prevent
-        @blur="saveNewValue($element)"
+        @blur="saveNewValue($event, fullName)"
       ></h1>
       <h2
         contenteditable="true"
         :placeholder="title.placeholder"
         dir="auto"
-        v-text="title.title"
+        v-text="title.text"
         @keydown.enter.prevent
-        @blur="saveNewValue($event)"
+        @blur="saveNewValue($event, title)"
       ></h2>
       <div class="contacts">
         <ContactDetails
@@ -216,11 +216,11 @@ export default {
   data() {
     return {
       fullName: {
-        fullName: "",
+        text: "",
         placeholder: "Full Name"
       },
       title: {
-        title: "",
+        text: "",
         placeholder: "Title"
       },
       contactDetails: [
@@ -245,9 +245,8 @@ export default {
     };
   },
   methods: {
-    saveNewValue(element) {
-      this.fullName.fullName = element.target.innerText;
-      this.title.title = element.target.innerText;
+    saveNewValue(e, contentItem) {
+      contentItem.text = e.target.innerText;
     }
   }
 };
