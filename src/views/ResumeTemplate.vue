@@ -3,14 +3,26 @@
     <section class="header">
       <h1
         contenteditable="true"
-        :placeholder="heading1.placeholder"
+        :placeholder="fullName.placeholder"
         dir="auto"
-        v-html="heading1.innerText"
+        v-text="fullName.fullName"
+        @keydown.enter.prevent
+        @blur="saveNewValue($element)"
+      ></h1>
+      <h2
+        contenteditable="true"
+        :placeholder="title.placeholder"
+        dir="auto"
+        v-text="title.title"
         @keydown.enter.prevent
         @blur="saveNewValue($event)"
-      ></h1>
-      <h2 contenteditable="true" placeholder="Title"></h2>
+      ></h2>
       <div class="contacts">
+        <ContactDetails
+          v-for="(detail, index) in contactDetails"
+          :key="index"
+          >{{ detail }}</ContactDetails
+        >
         <a href="" contenteditable="true" placeholder="website"></a>
         <a href="" contenteditable="true" placeholder="email"></a>
         <a href="" contenteditable="true" placeholder="phone"></a>
@@ -194,29 +206,49 @@
 
 <script>
 // @ is an alias to /src
+import ContactDetails from "../components/ContactDetails.vue";
 
 export default {
   name: "ResumeTemplate",
-  components: {},
+  components: {
+    ContactDetails
+  },
   data() {
     return {
-      heading1: {
-        textContent: "",
+      fullName: {
+        fullName: "",
         placeholder: "Full Name"
-      }
+      },
+      title: {
+        title: "",
+        placeholder: "Title"
+      },
+      contactDetails: [
+        {
+          type: "website",
+          text: "",
+          href: "",
+          placeholder: "website"
+        },
+        {
+          type: "email",
+          text: "",
+          href: "",
+          placeholder: "email"
+        },
+        {
+          type: "phone",
+          text: "",
+          placeholder: ""
+        }
+      ]
     };
   },
   methods: {
-    // onInput(event) {
-    //   this.innerText = event.target.innerText;
-    //   console.log("Text: %o", event.target.innerText);
-    // }
-    saveNewValue(e) {
-      console.log(e.target.innerText);
-      this.heading1.textContent = e.target.innerText;
+    saveNewValue(element) {
+      this.fullName.fullName = element.target.innerText;
+      this.title.title = element.target.innerText;
     }
   }
 };
-
-// TODO Try ref and refs
 </script>
