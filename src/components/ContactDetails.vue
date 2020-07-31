@@ -1,9 +1,17 @@
 <template>
-  <a href="" contenteditable="true" placeholder="test"></a>
+  <a
+    href=""
+    dir="auto"
+    contenteditable="true"
+    placeholder="placeholderValue"
+    v-text="textValue"
+  ></a>
 </template>
 
 <script>
-export default {};
+export default {
+  props: ["placeholderValue", "textValue"]
+};
 </script>
 
 <style></style>

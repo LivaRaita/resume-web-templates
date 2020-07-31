@@ -21,11 +21,11 @@
         <ContactDetails
           v-for="(detail, index) in contactDetails"
           :key="index"
-          >{{ detail }}</ContactDetails
-        >
-        <a href="" contenteditable="true" placeholder="website"></a>
-        <a href="" contenteditable="true" placeholder="email"></a>
-        <a href="" contenteditable="true" placeholder="phone"></a>
+          :placeholder="detail.placeholder"
+          :v-text="detail.text"
+          @keydown.enter.prevent
+          @blur="saveNewValue($event, detail)"
+        ></ContactDetails>
       </div>
     </section>
     <hr />
@@ -239,7 +239,7 @@ export default {
         {
           type: "phone",
           text: "",
-          placeholder: ""
+          placeholder: "phone"
         }
       ]
     };
