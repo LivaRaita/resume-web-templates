@@ -23,8 +23,7 @@
           :key="index"
           :placeholder="detail.placeholder"
           :v-text="detail.text"
-          @keydown.enter.prevent
-          @blur="saveNewValue($event, detail)"
+          @addValue="saveNewValue($event, detail)"
         ></ContactDetails>
       </div>
     </section>
