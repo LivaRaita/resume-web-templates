@@ -7,7 +7,7 @@
         dir="auto"
         v-text="fullName.text"
         @keydown.enter.prevent
-        @blur="saveNewValue($event, fullName)"
+        @blur="updateContentItemText(fullName, $event.target.innerText)"
       ></h1>
       <h2
         contenteditable="true"
@@ -15,7 +15,7 @@
         dir="auto"
         v-text="title.text"
         @keydown.enter.prevent
-        @blur="saveNewValue($event, title)"
+        @blur="updateContentItemText(title, $event.target.innerText)"
       ></h2>
       <div class="contacts">
         <ContactDetails
@@ -23,8 +23,14 @@
           :key="index"
           :placeholder="detail.placeholder"
           :v-text="detail.text"
-          @addValue="saveNewValue($event, detail)"
+          @addValue="updateContentItemText($event.text, detail)"
         ></ContactDetails>
+        <button
+          class="addElement"
+          @click="addContactDetails"
+          aria-label="Add contact info"
+          >+</button
+        >
       </div>
     </section>
     <hr />
@@ -244,9 +250,34 @@ export default {
     };
   },
   methods: {
-    saveNewValue(e, contentItem) {
-      contentItem.text = e.target.innerText;
+    updateContentItemText(contentItem, text) {
+      contentItem.text = text;
+    },
+    addContactDetails() {
+      const contactInfo = {
+        type: "contact info",
+        text: "",
+        placeholder: "contact info"
+      };
+      this.contactDetails.push(contactInfo);
     }
   }
 };
 </script>
+<style scoped>
+.addElement {
+  border: 2px solid #2d9cdb;
+  padding: 2px 8px;
+  background-color: transparent;
+  opacity: 70%;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #2d9cdb;
+  cursor: pointer;
+}
+
+.addElement:hover {
+  opacity: 100%;
+}
+</style>

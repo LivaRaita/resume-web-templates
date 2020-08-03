@@ -6,7 +6,7 @@
     placeholder="placeholderValue"
     v-text="textValue"
     @keydown.enter.prevent
-    @blur="newValueAdded($event)"
+    @blur="newValueAdded($event.target.innerText)"
   ></a>
 </template>
 
@@ -14,8 +14,8 @@
 export default {
   props: ["placeholderValue", "textValue"],
   methods: {
-    newValueAdded($event) {
-      this.$emit("addValue", $event);
+    newValueAdded(text) {
+      this.$emit("addValue", { text });
     }
   }
 };
