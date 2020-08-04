@@ -3,27 +3,29 @@
     <section class="header">
       <h1
         contenteditable="true"
-        :placeholder="fullName.placeholder"
+        :placeholder="cvTemplate.fullName.placeholder"
         dir="auto"
-        v-text="fullName.text"
+        v-text="cvTemplate.fullName.text"
         @keydown.enter.prevent
-        @blur="updateContentItemText(fullName, $event.target.innerText)"
+        @blur="
+          updateContentItemText(cvTemplate.fullName, $event.target.innerText)
+        "
       ></h1>
       <h2
         contenteditable="true"
-        :placeholder="title.placeholder"
+        :placeholder="cvTemplate.title.placeholder"
         dir="auto"
-        v-text="title.text"
+        v-text="cvTemplate.title.text"
         @keydown.enter.prevent
-        @blur="updateContentItemText(title, $event.target.innerText)"
+        @blur="updateContentItemText(cvTemplate.title, $event.target.innerText)"
       ></h2>
       <div class="contacts">
         <ContactDetails
-          v-for="(detail, index) in contactDetails"
+          v-for="(detail, index) in cvTemplate.contactDetails"
           :key="index"
           :placeholder="detail.placeholder"
           :v-text="detail.text"
-          @addValue="updateContentItemText($event.text, detail)"
+          @addValue="updateContentItemText(detail, $event.text)"
         ></ContactDetails>
         <button
           class="addElement"
@@ -220,33 +222,35 @@ export default {
   },
   data() {
     return {
-      fullName: {
-        text: "",
-        placeholder: "Full Name"
-      },
-      title: {
-        text: "",
-        placeholder: "Title"
-      },
-      contactDetails: [
-        {
-          type: "website",
+      cvTemplate: {
+        fullName: {
           text: "",
-          href: "",
-          placeholder: "website"
+          placeholder: "Full Name"
         },
-        {
-          type: "email",
+        title: {
           text: "",
-          href: "",
-          placeholder: "email"
+          placeholder: "Title"
         },
-        {
-          type: "phone",
-          text: "",
-          placeholder: "phone"
-        }
-      ]
+        contactDetails: [
+          {
+            type: "website",
+            text: "",
+            href: "",
+            placeholder: "website"
+          },
+          {
+            type: "email",
+            text: "",
+            href: "",
+            placeholder: "email"
+          },
+          {
+            type: "phone",
+            text: "",
+            placeholder: "phone"
+          }
+        ]
+      }
     };
   },
   methods: {
@@ -259,7 +263,7 @@ export default {
         text: "",
         placeholder: "contact info"
       };
-      this.contactDetails.push(contactInfo);
+      this.cvTemplate.contactDetails.push(contactInfo);
     }
   }
 };
