@@ -1,5 +1,12 @@
 <template>
   <div class="container">
+    <TextActionMenu
+      v-show="textHover"
+      :style="{
+        top: textActionMenuCoordinates.x + 'px',
+        left: textActionMenuCoordinates.y + 'px'
+      }"
+    ></TextActionMenu>
     <section class="header">
       <h1
         contenteditable="true"
@@ -26,6 +33,7 @@
           :placeholder="detail.placeholder"
           :v-text="detail.text"
           @addValue="updateContentItemText(detail, $event.text)"
+          @hoverOnText="showTextActionMenu($event.value, $event)"
         ></ContactDetails>
         <button
           class="addElement"
@@ -213,11 +221,13 @@
 
 <script>
 // @ is an alias to /src
-import ContactDetails from "../components/ContactDetails.vue";
+import TextActionMenu from "../components/TextActionMenu";
+import ContactDetails from "../components/ContactDetails";
 
 export default {
   name: "ResumeTemplate",
   components: {
+    TextActionMenu,
     ContactDetails
   },
   data() {
@@ -250,6 +260,11 @@ export default {
             placeholder: "phone"
           }
         ]
+      },
+      textHover: false,
+      textActionMenuCoordinates: {
+        x: 0,
+        y: 0
       }
     };
   },
@@ -264,6 +279,17 @@ export default {
         placeholder: "contact info"
       };
       this.cvTemplate.contactDetails.push(contactInfo);
+    },
+    showTextActionMenu(value, event) {
+      let y = event.event.pageX - event.event.offsetX - 40;
+      let x = event.event.pageY - event.event.offsetY - 40;
+      if (value === true) {
+        this.textActionMenuCoordinates.x = x;
+        this.textActionMenuCoordinates.y = y;
+      }
+
+      this.textHover = value;
+      console.log(event.event);
     }
   }
 };

@@ -7,6 +7,8 @@
     v-text="textValue"
     @keydown.enter.prevent
     @blur="newValueAdded($event.target.innerText)"
+    @mouseover="hoverOnText(true, $event)"
+    @mouseleave="hoverOnText(false, $event)"
   ></a>
 </template>
 
@@ -16,6 +18,9 @@ export default {
   methods: {
     newValueAdded(text) {
       this.$emit("addValue", { text });
+    },
+    hoverOnText(value, event) {
+      this.$emit("hoverOnText", { value, event });
     }
   }
 };
