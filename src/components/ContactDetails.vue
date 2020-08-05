@@ -26,4 +26,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+a {
+  border: 1px solid red;
+}
+</style>

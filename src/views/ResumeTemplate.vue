@@ -1,11 +1,12 @@
 <template>
   <div class="container">
     <TextActionMenu
-      v-show="textHover"
+      v-show="textHover || menuHover"
       :style="{
         top: textActionMenuCoordinates.x + 'px',
         left: textActionMenuCoordinates.y + 'px'
       }"
+      @hoverOnMenu="keepShowingTextActionMenu($event.value)"
     ></TextActionMenu>
     <section class="header">
       <h1
@@ -262,6 +263,7 @@ export default {
         ]
       },
       textHover: false,
+      menuHover: false,
       textActionMenuCoordinates: {
         x: 0,
         y: 0
@@ -281,15 +283,14 @@ export default {
       this.cvTemplate.contactDetails.push(contactInfo);
     },
     showTextActionMenu(value, event) {
-      let y = event.event.pageX - event.event.offsetX - 40;
-      let x = event.event.pageY - event.event.offsetY - 40;
-      if (value === true) {
-        this.textActionMenuCoordinates.x = x;
-        this.textActionMenuCoordinates.y = y;
-      }
-
+      let y = event.event.pageX - event.event.offsetX - 12;
+      let x = event.event.pageY - event.event.offsetY - 120;
+      this.textActionMenuCoordinates.x = x;
+      this.textActionMenuCoordinates.y = y;
       this.textHover = value;
-      console.log(event.event);
+    },
+    keepShowingTextActionMenu(value) {
+      this.menuHover = value;
     }
   }
 };

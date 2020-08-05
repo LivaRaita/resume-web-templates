@@ -1,18 +1,39 @@
 <template>
-  <div class="text-action-menu">Test</div>
+  <div
+    class="container"
+    @mouseover="keepShowingTextActionMenu(true, $event)"
+    @mouseleave="keepShowingTextActionMenu(false, $event)"
+  >
+    <div class="text-action-menu">
+      <button>Delete</button>
+      <button>Link</button>
+    </div>
+  </div>
 </template>
 
 <script>
-export default {};
+export default {
+  methods: {
+    keepShowingTextActionMenu(value) {
+      this.$emit("hoverOnMenu", { value });
+    }
+  }
+};
 </script>
 
 <style scoped>
-.text-action-menu {
+.container {
+  padding: 12px;
+  display: flex;
   position: absolute;
+  z-index: 1;
+  height: 40px;
+  border: 1px solid red;
+}
+.text-action-menu {
+  display: flex;
   background-color: white;
-  height: 32px;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  width: 50%;
   box-shadow: 0px 9px 24px rgba(0, 0, 0, 0.2), 0px 3px 6px rgba(0, 0, 0, 0.1),
     0px 0px 1px rgba(0, 0, 0, 0.005);
   border-radius: 3px;
