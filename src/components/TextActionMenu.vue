@@ -1,23 +1,15 @@
 <template>
-  <div
-    class="container"
-    @mouseover="keepShowingTextActionMenu(true, $event)"
-    @mouseleave="keepShowingTextActionMenu(false, $event)"
-  >
+  <div class="container">
     <div class="text-action-menu">
-      <button>Delete</button>
       <button>Link</button>
+      <button>Delete</button>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  methods: {
-    keepShowingTextActionMenu(value) {
-      this.$emit("hoverOnMenu", { value });
-    }
-  }
+  methods: {}
 };
 </script>
 
@@ -29,6 +21,7 @@ export default {
   z-index: 1;
   height: 40px;
   border: 1px solid red;
+  margin: 0;
 }
 .text-action-menu {
   display: flex;

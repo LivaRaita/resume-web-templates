@@ -1,13 +1,5 @@
 <template>
   <div class="container">
-    <TextActionMenu
-      v-show="textHover || menuHover"
-      :style="{
-        top: textActionMenuCoordinates.x + 'px',
-        left: textActionMenuCoordinates.y + 'px'
-      }"
-      @hoverOnMenu="keepShowingTextActionMenu($event.value)"
-    ></TextActionMenu>
     <section class="header">
       <h1
         contenteditable="true"
@@ -29,12 +21,11 @@
       ></h2>
       <div class="contacts">
         <ContactDetails
-          v-for="(detail, index) in cvTemplate.contactDetails"
-          :key="index"
-          :placeholder="detail.placeholder"
-          :v-text="detail.text"
+          v-for="detail in cvTemplate.contactDetails"
+          :key="detail.id"
+          :placeholderValue="detail.placeholder"
+          :textValue="detail.text"
           @addValue="updateContentItemText(detail, $event.text)"
-          @hoverOnText="showTextActionMenu($event.value, $event)"
         ></ContactDetails>
         <button
           class="addElement"
@@ -222,13 +213,11 @@
 
 <script>
 // @ is an alias to /src
-import TextActionMenu from "../components/TextActionMenu";
 import ContactDetails from "../components/ContactDetails";
 
 export default {
   name: "ResumeTemplate",
   components: {
-    TextActionMenu,
     ContactDetails
   },
   data() {
@@ -261,12 +250,6 @@ export default {
             placeholder: "phone"
           }
         ]
-      },
-      textHover: false,
-      menuHover: false,
-      textActionMenuCoordinates: {
-        x: 0,
-        y: 0
       }
     };
   },
@@ -281,16 +264,6 @@ export default {
         placeholder: "contact info"
       };
       this.cvTemplate.contactDetails.push(contactInfo);
-    },
-    showTextActionMenu(value, event) {
-      let y = event.event.pageX - event.event.offsetX - 12;
-      let x = event.event.pageY - event.event.offsetY - 120;
-      this.textActionMenuCoordinates.x = x;
-      this.textActionMenuCoordinates.y = y;
-      this.textHover = value;
-    },
-    keepShowingTextActionMenu(value) {
-      this.menuHover = value;
     }
   }
 };
