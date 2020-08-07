@@ -26,6 +26,7 @@
           :placeholderValue="detail.placeholder"
           :textValue="detail.text"
           @addValue="updateContentItemText(detail, $event.text)"
+          @deleteItem="deleteContentItem(detail, cvTemplate.contactDetails)"
         ></ContactDetails>
         <button
           class="addElement"
@@ -264,12 +265,15 @@ export default {
         placeholder: "contact info"
       };
       this.cvTemplate.contactDetails.push(contactInfo);
+    },
+    deleteContentItem(item, array) {
+      array.splice(item, 1);
     }
   }
 };
 </script>
 <style scoped>
-.addElement {
+.addElemet {
   border: 2px solid #2d9cdb;
   padding: 2px 8px;
   background-color: transparent;

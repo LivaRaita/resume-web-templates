@@ -2,14 +2,18 @@
   <div class="container">
     <div class="text-action-menu">
       <button>Link</button>
-      <button>Delete</button>
+      <button @click="deleteItem($event)">Delete</button>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  methods: {}
+  methods: {
+    deleteItem(event) {
+      console.log(event);
+    }
+  }
 };
 </script>
 
