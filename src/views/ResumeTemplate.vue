@@ -267,7 +267,10 @@ export default {
       this.cvTemplate.contactDetails.push(contactInfo);
     },
     deleteContentItem(item, array) {
-      array.splice(item, 1);
+      array.splice(array.indexOf(item), 1);
+      // const newArray = array.filter(()=> {
+      //   return
+      // })
     }
   }
 };
