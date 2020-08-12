@@ -26,14 +26,6 @@
         </form>
       </div>
     </div>
-    <!-- <div class="link-input-wrapper" v-if="displayLinkInput">
-      <input
-        type="text"
-        placeholder="Paste your link, such as https://google.com..."
-      />
-      <button>Link</button>
-      <button>Unlink</button>
-    </div> -->
   </div>
 </template>
 

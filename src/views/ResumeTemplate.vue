@@ -49,86 +49,91 @@
         ></p>
         <div class="experience">
           <h2>Experience</h2>
-          <div class="position-wrapper">
-            <div class="position-header">
-              <h3>
-                <span contenteditable="true" placeholder="Position"></span> at
-                <span contenteditable="true" placeholder="Company"></span>
-              </h3>
-              <p class="date-location">
-                <span contenteditable="true" placeholder="Start Date"></span>
-                - <span contenteditable="true" placeholder="End Date"></span>,
-                <span contenteditable="true" placeholder="Location"></span>
-              </p>
+          <div class="section-container">
+            <div class="position-wrapper">
+              <div class="position-header">
+                <h3>
+                  <span contenteditable="true" placeholder="Position"></span> at
+                  <span contenteditable="true" placeholder="Company"></span>
+                </h3>
+                <p class="date-location">
+                  <span contenteditable="true" placeholder="Start Date"></span>
+                  - <span contenteditable="true" placeholder="End Date"></span>,
+                  <span contenteditable="true" placeholder="Location"></span>
+                </p>
+              </div>
+              <p
+                class="position-description"
+                contenteditable="true"
+                placeholder="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni"
+              ></p>
             </div>
-            <p
-              class="position-description"
-              contenteditable="true"
-              placeholder="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni"
-            ></p>
+            <div class="position-wrapper">
+              <div class="position-header">
+                <h3>
+                  <span contenteditable="true" placeholder="Position"></span> at
+                  <span contenteditable="true" placeholder="Company"></span>
+                </h3>
+                <p class="date-location">
+                  <span contenteditable="true" placeholder="Start Date"></span>
+                  - <span contenteditable="true" placeholder="End Date"></span>,
+                  <span contenteditable="true" placeholder="Location"></span>
+                </p>
+              </div>
+              <p
+                class="position-description"
+                contenteditable="true"
+                placeholder="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni"
+              ></p>
+            </div>
+            <div class="position-wrapper">
+              <div class="position-header">
+                <h3>
+                  <span contenteditable="true" placeholder="Position"></span> at
+                  <span contenteditable="true" placeholder="Company"></span>
+                </h3>
+                <p class="date-location">
+                  <span contenteditable="true" placeholder="Start Date"></span>
+                  - <span contenteditable="true" placeholder="End Date"></span>,
+                  <span contenteditable="true" placeholder="Location"></span>
+                </p>
+              </div>
+              <p
+                class="position-description"
+                contenteditable="true"
+                placeholder="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni"
+              ></p>
+            </div>
+            <button class="addElement" aria-label="Add contact info"
+              ><span>+</span></button
+            >
           </div>
-          <div class="position-wrapper">
-            <div class="position-header">
-              <h3>
-                <span contenteditable="true" placeholder="Position"></span> at
-                <span contenteditable="true" placeholder="Company"></span>
-              </h3>
-              <p class="date-location">
-                <span contenteditable="true" placeholder="Start Date"></span>
-                - <span contenteditable="true" placeholder="End Date"></span>,
-                <span contenteditable="true" placeholder="Location"></span>
-              </p>
+          <div class="education">
+            <h2>Education</h2>
+            <div class="position-wrapper">
+              <div class="position-header">
+                <h3>
+                  <span
+                    contenteditable="true"
+                    placeholder="University, Courses, Certifications etc."
+                  ></span>
+                  at
+                </h3>
+                <p class="date-location">
+                  <span
+                    contenteditable="true"
+                    placeholder="Graduation Date"
+                  ></span
+                  >,
+                  <span contenteditable="true" placeholder="Location"></span>
+                </p>
+              </div>
+              <p
+                class="position-description"
+                contenteditable="true"
+                placeholder="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni"
+              ></p>
             </div>
-            <p
-              class="position-description"
-              contenteditable="true"
-              placeholder="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni"
-            ></p>
-          </div>
-          <div class="position-wrapper">
-            <div class="position-header">
-              <h3>
-                <span contenteditable="true" placeholder="Position"></span> at
-                <span contenteditable="true" placeholder="Company"></span>
-              </h3>
-              <p class="date-location">
-                <span contenteditable="true" placeholder="Start Date"></span>
-                - <span contenteditable="true" placeholder="End Date"></span>,
-                <span contenteditable="true" placeholder="Location"></span>
-              </p>
-            </div>
-            <p
-              class="position-description"
-              contenteditable="true"
-              placeholder="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni"
-            ></p>
-          </div>
-        </div>
-        <div class="education">
-          <h2>Education</h2>
-          <div class="position-wrapper">
-            <div class="position-header">
-              <h3>
-                <span
-                  contenteditable="true"
-                  placeholder="University, Courses, Certifications etc."
-                ></span>
-                at
-              </h3>
-              <p class="date-location">
-                <span
-                  contenteditable="true"
-                  placeholder="Graduation Date"
-                ></span
-                >,
-                <span contenteditable="true" placeholder="Location"></span>
-              </p>
-            </div>
-            <p
-              class="position-description"
-              contenteditable="true"
-              placeholder="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni"
-            ></p>
           </div>
         </div>
       </div>
@@ -276,25 +281,37 @@ export default {
     },
     addLink(item, href) {
       item.href = href;
-      console.log(item.href);
+      if (item.text == "") {
+        item.text = item.placeholder;
+      }
     }
   }
 };
 </script>
-<style scoped>
-.addElemet {
-  border: 2px solid #2d9cdb;
-  padding: 2px 8px;
-  background-color: transparent;
-  opacity: 70%;
-  border-radius: 4px;
-  font-size: 1rem;
-  font-weight: 700;
-  color: #2d9cdb;
-  cursor: pointer;
+<style>
+.addElement {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 16px;
+  color: rgba(0, 0, 0, 0.7);
+  width: 20px;
+  height: 20px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 100px;
+  padding: 0;
+  margin: 0;
 }
 
 .addElement:hover {
-  opacity: 100%;
+  color: rgba(0, 0, 0, 1);
+}
+
+.section-container {
+  margin-bottom: 2rem;
 }
 </style>
