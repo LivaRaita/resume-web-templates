@@ -22,11 +22,13 @@
       <div class="contacts">
         <ContactDetails
           v-for="detail in cvTemplate.contactDetails"
+          :linkAddress="detail.href"
           :key="detail.id"
           :placeholderValue="detail.placeholder"
           :textValue="detail.text"
           @addValue="updateContentItemText(detail, $event.text)"
           @deleteItem="deleteContentItem(detail, cvTemplate.contactDetails)"
+          @addLink="addLink(detail, $event.href)"
         ></ContactDetails>
         <button
           class="addElement"
@@ -271,6 +273,10 @@ export default {
       // const newArray = array.filter(()=> {
       //   return
       // })
+    },
+    addLink(item, href) {
+      item.href = href;
+      console.log(item.href);
     }
   }
 };

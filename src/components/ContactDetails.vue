@@ -1,7 +1,7 @@
 <template>
   <div>
     <a
-      href=""
+      :href="linkAddress"
       dir="auto"
       contenteditable="true"
       :placeholder="placeholderValue"
@@ -14,24 +14,36 @@
         <button class="link-button" @click="showLinkInputToggle">Link</button>
         <button @click="deleteItem">Delete</button>
       </div>
+      <div class="link-input-wrapper" v-if="displayLinkInput">
+        <form>
+          <input
+            type="text"
+            placeholder="Paste your link, such as https://google.com..."
+            v-model="href"
+          />
+          <button type="submit" @click.prevent="addLink(href)">Link</button>
+          <button>Unlink</button>
+        </form>
+      </div>
     </div>
-    <div class="link-input-wrapper" v-if="displayLinkInput">
+    <!-- <div class="link-input-wrapper" v-if="displayLinkInput">
       <input
         type="text"
         placeholder="Paste your link, such as https://google.com..."
       />
       <button>Link</button>
       <button>Unlink</button>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
 export default {
-  props: ["placeholderValue", "textValue"],
+  props: ["placeholderValue", "textValue", "linkAddress"],
   data() {
     return {
-      displayLinkInput: false
+      displayLinkInput: false,
+      href: ""
     };
   },
   methods: {
@@ -44,6 +56,11 @@ export default {
     showLinkInputToggle() {
       this.displayLinkInput = !this.displayLinkInput;
       // implement clicking outside (or on other element) functionality to close the link input
+    },
+    addLink(href) {
+      this.$emit("addLink", { href });
+      href = "";
+      // implement removing the menu and showing that the contact detail is linked
     }
   },
   components: {}
@@ -51,9 +68,9 @@ export default {
 </script>
 
 <style scoped>
-a {
+/* a {
   border: 1px solid red;
-}
+} */
 
 a:hover ~ .container {
   display: flex;
@@ -69,7 +86,7 @@ a:hover ~ .container {
   padding: 12px;
   z-index: 1;
   height: 40px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   margin: 0;
 }
 .text-action-menu {
@@ -81,9 +98,14 @@ a:hover ~ .container {
   border-radius: 3px;
 }
 
+.link-input-wrapper > form {
+  display: flex;
+}
+
 .link-input-wrapper {
   display: flex;
   position: absolute;
+  transform: translateY(75%) translateX(8px);
   background-color: white;
   border: 1px solid rgba(0, 0, 0, 0.1);
   box-shadow: 0px 9px 24px rgba(0, 0, 0, 0.2), 0px 3px 6px rgba(0, 0, 0, 0.1),
