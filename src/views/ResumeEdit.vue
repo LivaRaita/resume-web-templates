@@ -18,23 +18,26 @@
       <div class="resume-section">
         <h3 class="group-heading">Websites & Social Links</h3>
         <div class="section-outline">
-          <div class="section-top">
-            <h2>(Not specified)</h2>
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M16.59 8.58997L12 13.17L7.41 8.58997L6 9.99997L12 16L18 9.99997L16.59 8.58997Z"
-                fill="black"
-                fill-opacity="0.54"
-              />
-            </svg>
+          <div class="section-top" @click="showPanel = !showPanel">
+            <h2>(Not pecified)</h2>
+            <div>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                :class="showPanel ? 'rotate' : ''"
+              >
+                <path
+                  d="M16.59 8.58997L12 13.17L7.41 8.58997L6 9.99997L12 16L18 9.99997L16.59 8.58997Z"
+                  fill="black"
+                  fill-opacity="0.54"
+                />
+              </svg>
+            </div>
           </div>
-          <div class="row">
+          <div class="row" v-if="showPanel">
             <div class="form-group">
               <label for="">Label</label>
               <input type="text" />
@@ -63,6 +66,7 @@
 export default {
   data() {
     return {
+      showPanel: false,
       fullName: ""
     };
   }
@@ -163,5 +167,9 @@ export default {
 .resume-content h1 {
   font-size: calc(1.3vw + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
   line-height: calc(1.3em + (1.5 - 1.2) * ((100vw - 300px) / (1600 - 300)));
+}
+
+.rotate {
+  transform: rotate(180deg);
 }
 </style>
