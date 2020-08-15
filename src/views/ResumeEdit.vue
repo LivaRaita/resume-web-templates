@@ -10,7 +10,7 @@
           </div>
           <div class="form-group">
             <label for="">Job Title</label>
-            <input type="text" />
+            <input type="text" v-model="jobTitle" />
           </div>
         </div>
       </div>
@@ -19,7 +19,9 @@
         <h3 class="group-heading">Websites & Social Links</h3>
         <div class="section-outline">
           <div class="section-top" @click="showPanel = !showPanel">
-            <h2>(Not pecified)</h2>
+            <h2 placeholder="(Not specified)">{{
+              websitesSocialLinks[0].label
+            }}</h2>
             <div>
               <svg
                 width="24"
@@ -40,11 +42,11 @@
           <div class="row" v-if="showPanel">
             <div class="form-group">
               <label for="">Label</label>
-              <input type="text" />
+              <input type="text" v-model="websitesSocialLinks[0].label" />
             </div>
             <div class="form-group">
               <label for="">Link</label>
-              <input type="text" />
+              <input type="text" v-model="websitesSocialLinks[0].link" />
             </div>
           </div>
         </div>
@@ -55,6 +57,12 @@
         <div class="resume-preview">
           <div class="resume-content">
             <h1>{{ fullName }}</h1>
+            <h2>{{ jobTitle }}</h2>
+            <ul v-if="websitesSocialLinks[0].label.length > 0">
+              <li v-for="(link, index) in websitesSocialLinks" :key="index"
+                ><a :href="link.link">{{ link.label }}</a></li
+              >
+            </ul>
           </div>
         </div>
       </div>
@@ -67,13 +75,25 @@ export default {
   data() {
     return {
       showPanel: false,
-      fullName: ""
+      fullName: "",
+      jobTitle: "",
+      websitesSocialLinks: [
+        {
+          label: "",
+          link: ""
+        }
+      ]
     };
   }
 };
 </script>
 
 <style>
+[placeholder]:empty::before {
+  content: attr(placeholder);
+  color: #000;
+}
+
 .wrapper {
   display: flex;
 }
@@ -125,6 +145,7 @@ export default {
   color: black;
   font-size: 14px;
   padding: 6px 12px;
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .section-outline {
@@ -166,6 +187,10 @@ export default {
 
 .resume-content h1 {
   font-size: calc(1.3vw + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
+  line-height: calc(1.3em + (1.5 - 1.2) * ((100vw - 300px) / (1600 - 300)));
+}
+.resume-content h2 {
+  font-size: calc(0.5vw + (26 - 14) * ((100vw - 300px) / (1600 - 300)));
   line-height: calc(1.3em + (1.5 - 1.2) * ((100vw - 300px) / (1600 - 300)));
 }
 
