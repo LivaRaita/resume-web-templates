@@ -17,6 +17,7 @@
 
       <div class="resume-section">
         <h3 class="group-heading">Websites & Social Links</h3>
+        <WebsitesSocialLinks></WebsitesSocialLinks>
         <div class="section-outline">
           <div class="section-top" @click="showPanel = !showPanel">
             <h2 placeholder="(Not specified)">{{
@@ -30,6 +31,7 @@
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 :class="showPanel ? 'rotate' : ''"
+                class="arrow-icon"
               >
                 <path
                   d="M16.59 8.58997L12 13.17L7.41 8.58997L6 9.99997L12 16L18 9.99997L16.59 8.58997Z"
@@ -71,6 +73,8 @@
 </template>
 
 <script>
+import WebsitesSocialLinks from "../components/WebsitesSocialLinks.vue";
+
 export default {
   data() {
     return {
@@ -84,6 +88,10 @@ export default {
         }
       ]
     };
+  },
+  methods: {},
+  components: {
+    WebsitesSocialLinks
   }
 };
 </script>
@@ -196,5 +204,9 @@ export default {
 
 .rotate {
   transform: rotate(180deg);
+}
+
+.arrow-icon {
+  transition: all 200ms ease-out;
 }
 </style>
