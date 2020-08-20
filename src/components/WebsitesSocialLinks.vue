@@ -3,7 +3,10 @@
     <span class="handle"></span>
     <div class="section-outline">
       <div class="section-top" @click="showPanel = !showPanel">
-        <h2 placeholder="(Not specified)">{{ item.label }}</h2>
+        <div>
+          <h2 placeholder="(Not specified)">{{ item.label }}</h2>
+          <p v-show="item.link">{{ item.link }}</p>
+        </div>
         <div>
           <svg
             width="24"
@@ -55,7 +58,7 @@ export default {
 }
 
 .handle {
-  margin-top: 1rem;
+  margin-top: 16px;
   width: 24px;
   height: 28px;
   background-color: red;
@@ -70,7 +73,6 @@ export default {
 .section-outline {
   border: 1px solid #dddbda;
   border-radius: 4px;
-  padding: 16px;
   width: 100%;
 }
 
@@ -92,12 +94,20 @@ export default {
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+  padding: 16px;
 }
 
 .section-top h2 {
   font-size: 14px;
   line-height: 20px;
+  margin: 0px 0px 4px 0px;
+}
+
+.section-top p {
   margin: 0;
+  font-size: 12px;
+  line-height: 20px;
+  color: #646464;
 }
 
 .row {
@@ -105,6 +115,7 @@ export default {
   grid-template-columns: 1fr 1fr;
   grid-gap: 32px;
   margin-top: 12px;
+  padding: 0px 16px 16px 16px;
 }
 .form-group {
   display: flex;
