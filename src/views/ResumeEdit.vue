@@ -14,53 +14,25 @@
           </div>
         </div>
       </div>
-
+      <!-- Resume sections -->
       <div class="resume-section">
         <h3 class="group-heading">Websites & Social Links</h3>
-        <WebsitesSocialLinks></WebsitesSocialLinks>
-        <div class="section-outline">
-          <div class="section-top" @click="showPanel = !showPanel">
-            <h2 placeholder="(Not specified)">{{
-              websitesSocialLinks[0].label
-            }}</h2>
-            <div>
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                :class="showPanel ? 'rotate' : ''"
-                class="arrow-icon"
-              >
-                <path
-                  d="M16.59 8.58997L12 13.17L7.41 8.58997L6 9.99997L12 16L18 9.99997L16.59 8.58997Z"
-                  fill="black"
-                  fill-opacity="0.54"
-                />
-              </svg>
-            </div>
-          </div>
-          <div class="row" v-if="showPanel">
-            <div class="form-group">
-              <label for="">Label</label>
-              <input type="text" v-model="websitesSocialLinks[0].label" />
-            </div>
-            <div class="form-group">
-              <label for="">Link</label>
-              <input type="text" v-model="websitesSocialLinks[0].link" />
-            </div>
-          </div>
-        </div>
+        <WebsitesSocialLinks
+          v-for="item in websitesSocialLinks"
+          :key="item.id"
+          :item="item"
+        ></WebsitesSocialLinks>
+        <button @click="addLink">+ Add link</button>
       </div>
     </div>
+    <!-- Preview -->
     <div class="preview">
       <div class="resume-peview-wrapper">
         <div class="resume-preview">
           <div class="resume-content">
             <h1>{{ fullName }}</h1>
             <h2>{{ jobTitle }}</h2>
-            <ul v-if="websitesSocialLinks[0].label.length > 0">
+            <ul v-if="websitesSocialLinks.length > 0">
               <li v-for="(link, index) in websitesSocialLinks" :key="index"
                 ><a :href="link.link">{{ link.label }}</a></li
               >
@@ -81,15 +53,20 @@ export default {
       showPanel: false,
       fullName: "",
       jobTitle: "",
-      websitesSocialLinks: [
-        {
-          label: "",
-          link: ""
-        }
-      ]
+      websitesSocialLinks: [],
+      nextItemId: 0
     };
   },
-  methods: {},
+  methods: {
+    addLink() {
+      this.websitesSocialLinks.push({
+        id: this.nextItemId++,
+        label: "",
+        link: ""
+      });
+      console.log(this.websitesSocialLinks);
+    }
+  },
   components: {
     WebsitesSocialLinks
   }
@@ -112,17 +89,7 @@ export default {
   padding: 24px;
   max-width: 700px;
 }
-.section-top h2 {
-  font-size: 14px;
-  line-height: 20px;
-  margin: 0;
-}
-.section-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-}
+
 .resume-section {
   margin-bottom: 32px;
 }
@@ -156,11 +123,11 @@ export default {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-.section-outline {
+/* .section-outline {
   border: 1px solid #dddbda;
   border-radius: 4px;
   padding: 16px;
-}
+} */
 
 .preview {
   position: fixed;
@@ -173,9 +140,6 @@ export default {
   padding: 22px;
   overflow-y: scroll;
 }
-/* .resume-peview-wapper {
- 
-} */
 
 .resume-preview {
   position: relative;
@@ -208,5 +172,24 @@ export default {
 
 .arrow-icon {
   transition: all 200ms ease-out;
+}
+
+.resume-section button {
+  text-align: left;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 20px;
+  border: none;
+  background: none;
+  color: #2f80ed;
+  cursor: pointer;
+  padding: 6px 16px;
+  width: 100%;
+}
+
+.resume-section button:hover {
+  color: #2f80ed;
+  background-color: #f4f6f9;
+  border-radius: 4px;
 }
 </style>
