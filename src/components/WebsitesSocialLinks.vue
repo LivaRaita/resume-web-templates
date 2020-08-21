@@ -36,6 +36,9 @@
         </div>
       </div>
     </div>
+    <span class="delete-button-wrapper"
+      ><button @click="deleteItem(item)">Delete</button></span
+    >
   </div>
 </template>
 
@@ -46,6 +49,11 @@ export default {
     return {
       showPanel: false
     };
+  },
+  methods: {
+    deleteItem(item) {
+      this.$emit("removeItem", { item });
+    }
   }
 };
 </script>
@@ -144,5 +152,16 @@ export default {
 
 .arrow-icon {
   transition: all 200ms ease-out;
+}
+
+.delete-button-wrapper {
+  display: flex;
+  margin-top: 16px;
+  visibility: hidden;
+  height: 28px;
+}
+
+.section-wrapper:hover > .delete-button-wrapper {
+  visibility: visible;
 }
 </style>

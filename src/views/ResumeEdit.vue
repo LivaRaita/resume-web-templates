@@ -21,6 +21,7 @@
           v-for="item in websitesSocialLinks"
           :key="item.id"
           :item="item"
+          @removeItem="removeItem(item)"
         ></WebsitesSocialLinks>
         <button @click="addLink">+ Add link</button>
       </div>
@@ -64,7 +65,12 @@ export default {
         label: "",
         link: ""
       });
-      console.log(this.websitesSocialLinks);
+    },
+    removeItem(item) {
+      this.websitesSocialLinks.splice(
+        this.websitesSocialLinks.indexOf(item),
+        1
+      );
     }
   },
   components: {
