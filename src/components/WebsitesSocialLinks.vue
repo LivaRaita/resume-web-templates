@@ -1,6 +1,17 @@
 <template>
   <div class="section-wrapper">
-    <span class="handle"></span>
+    <span class="handle"
+      ><svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="black"
+        class="drag-indicator-icon"
+      >
+        <path d="M0 0h24v24H0V0z" fill="none" />
+        <path
+          d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+        /></svg
+    ></span>
     <div class="section-outline">
       <div class="section-top" @click="showPanel = !showPanel">
         <div>
@@ -19,8 +30,6 @@
           >
             <path
               d="M16.59 8.58997L12 13.17L7.41 8.58997L6 9.99997L12 16L18 9.99997L16.59 8.58997Z"
-              fill="black"
-              fill-opacity="0.54"
             />
           </svg>
         </div>
@@ -37,8 +46,19 @@
       </div>
     </div>
     <span class="delete-button-wrapper"
-      ><button @click="deleteItem(item)">Delete</button></span
-    >
+      ><button @click="deleteItem(item)"
+        ><svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="24"
+          viewBox="0 0 24 24"
+          width="24"
+          class="delete-icon"
+        >
+          <path d="M0 0h24v24H0V0z" fill="none" />
+          <path
+            d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4z"
+          /></svg></button
+    ></span>
   </div>
 </template>
 
@@ -66,12 +86,20 @@ export default {
 }
 
 .handle {
+  display: flex;
+  align-items: center;
   margin-top: 16px;
   width: 24px;
   height: 28px;
-  background-color: red;
   visibility: hidden;
   cursor: grab;
+}
+
+.drag-indicator-icon {
+  height: 24px;
+  width: 24px;
+  fill: black;
+  fill-opacity: 0.54;
 }
 
 .section-wrapper:hover > .handle {
@@ -152,6 +180,8 @@ export default {
 
 .arrow-icon {
   transition: all 200ms ease-out;
+  fill: black;
+  fill-opacity: 0.54;
 }
 
 .delete-button-wrapper {
@@ -161,7 +191,16 @@ export default {
   height: 28px;
 }
 
+.delete-button-wrapper button {
+  background: none;
+  border: none;
+}
+
 .section-wrapper:hover > .delete-button-wrapper {
   visibility: visible;
+}
+
+.delete-icon {
+  fill: #2f80ed;
 }
 </style>

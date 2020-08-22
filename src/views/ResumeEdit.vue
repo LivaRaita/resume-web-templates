@@ -23,7 +23,7 @@
           :item="item"
           @removeItem="removeItem(item)"
         ></WebsitesSocialLinks>
-        <button @click="addLink">+ Add link</button>
+        <button class="add-item-button" @click="addLink">+ Add link</button>
       </div>
     </div>
     <!-- Preview -->
@@ -180,7 +180,7 @@ export default {
   transition: all 200ms ease-out;
 }
 
-.resume-section button {
+.resume-section .add-item-button {
   text-align: left;
   font-weight: 600;
   font-size: 13px;
@@ -193,8 +193,7 @@ export default {
   width: 100%;
 }
 
-.resume-section button:hover {
-  color: #2f80ed;
+.resume-section .add-item-button:hover {
   background-color: #f4f6f9;
   border-radius: 4px;
 }
