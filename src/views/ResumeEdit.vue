@@ -17,12 +17,18 @@
       <!-- Resume sections -->
       <div class="resume-section">
         <h3 class="group-heading">Websites & Social Links</h3>
-        <WebsitesSocialLinks
+        <!-- <WebsitesSocialLinks
           v-for="item in websitesSocialLinks"
           :key="item.id"
           :item="item"
           @removeItem="removeItem(item)"
-        ></WebsitesSocialLinks>
+        ></WebsitesSocialLinks> -->
+        <ListElement
+          v-for="item in websitesSocialLinks"
+          :key="item.id"
+          :item="item"
+          @removeItem="removeItem(item)"
+        ></ListElement>
         <button class="add-item-button" @click="addLink">+ Add link</button>
       </div>
     </div>
@@ -46,7 +52,8 @@
 </template>
 
 <script>
-import WebsitesSocialLinks from "../components/WebsitesSocialLinks.vue";
+// import WebsitesSocialLinks from "../components/WebsitesSocialLinks.vue";
+import ListElement from "../components/ListElement";
 
 export default {
   data() {
@@ -74,7 +81,8 @@ export default {
     }
   },
   components: {
-    WebsitesSocialLinks
+    // WebsitesSocialLinks,
+    ListElement
   }
 };
 </script>
