@@ -185,19 +185,26 @@ export default {
 }
 
 .box {
+  position: relative;
   display: flex;
   width: 100%;
 }
 
 .box::before {
-  position: relative;
+  position: absolute;
   content: "x";
-  left: -50px;
+  top: 50%;
+  right: 100%;
+  margin-right: 8px;
+  transform: translateY(-50%);
 }
 .box::after {
-  position: relative;
+  position: absolute;
   content: "z";
-  right: -50px;
+  top: 50%;
+  left: 100%;
+  margin-left: 8px;
+  transform: translateY(-50%);
 }
 
 .handle::before {
