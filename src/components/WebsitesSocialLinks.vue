@@ -1,18 +1,6 @@
 <template>
-  <div class="section-wrapper">
-    <span class="handle"
-      ><svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="black"
-        class="drag-indicator-icon"
-      >
-        <path d="M0 0h24v24H0V0z" fill="none" />
-        <path
-          d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
-        /></svg
-    ></span>
-    <div class="section-outline">
+  <div class="section-wrapper section-outline">
+    <div class="section-top-wrapper">
       <div class="section-top" @click="showPanel = !showPanel">
         <div>
           <h2 placeholder="(Not specified)">{{ item.label }}</h2>
@@ -34,6 +22,36 @@
           </svg>
         </div>
       </div>
+
+      <div class="handle-wrapper"
+        ><svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="black"
+          class="drag-indicator-icon"
+        >
+          <path d="M0 0h24v24H0V0z" fill="none" />
+          <path
+            d="M11 18c0 1.1-.9 2-2 2s-2-.9-2-2 .9-2 2-2 2 .9 2 2zm-2-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0-6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 4c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+          /></svg
+      ></div>
+      <button class="delete-button" @click="deleteItem(item)"
+        ><div
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24"
+            viewBox="0 0 24 24"
+            width="24"
+            class="delete-icon"
+          >
+            <path d="M0 0h24v24H0V0z" fill="none" />
+            <path
+              d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4z"
+            /></svg></div
+      ></button>
+    </div>
+
+    <div class="">
       <div class="row" v-if="showPanel">
         <div class="form-group">
           <label for="">Label</label>
@@ -45,20 +63,6 @@
         </div>
       </div>
     </div>
-    <span class="delete-button-wrapper"
-      ><button @click="deleteItem(item)"
-        ><svg
-          xmlns="http://www.w3.org/2000/svg"
-          height="24"
-          viewBox="0 0 24 24"
-          width="24"
-          class="delete-icon"
-        >
-          <path d="M0 0h24v24H0V0z" fill="none" />
-          <path
-            d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4z"
-          /></svg></button
-    ></span>
   </div>
 </template>
 
@@ -80,49 +84,24 @@ export default {
 
 <style>
 .section-wrapper {
-  display: flex;
+  position: relative;
+  display: block;
+  flex-direction: column;
   width: 100%;
   margin-bottom: 12px;
-}
-
-.handle {
-  display: flex;
-  align-items: center;
-  margin-top: 16px;
-  width: 24px;
-  height: 28px;
-  visibility: hidden;
-  cursor: grab;
-}
-
-.drag-indicator-icon {
-  height: 24px;
-  width: 24px;
-  fill: black;
-  fill-opacity: 0.54;
-}
-
-.section-wrapper:hover > .handle {
-  visibility: visible;
 }
 
 .section-outline {
   border: 1px solid #dddbda;
   border-radius: 4px;
-  width: 100%;
+  /* width: 100%; */
 }
 
-[placeholder]:empty::before {
-  content: attr(placeholder);
-  color: #000;
-}
-
-.form-container {
+.section-top-wrapper {
   display: flex;
-  flex-direction: column;
-  width: 50%;
-  padding: 24px;
-  max-width: 700px;
+  align-items: center;
+  width: 100%;
+  height: 76px;
 }
 
 .section-top {
@@ -131,6 +110,7 @@ export default {
   align-items: center;
   cursor: pointer;
   padding: 16px;
+  width: 100%;
 }
 
 .section-top h2 {
@@ -167,15 +147,11 @@ export default {
 .form-group input {
   border: 1px solid #dddbda;
   border-radius: 4px;
-  hight: 20px;
+  height: 20px;
   color: black;
   font-size: 14px;
   padding: 6px 12px;
   background-color: rgba(0, 0, 0, 0.05);
-}
-
-.rotate {
-  transform: rotate(180deg);
 }
 
 .arrow-icon {
@@ -184,23 +160,85 @@ export default {
   fill-opacity: 0.54;
 }
 
-.delete-button-wrapper {
-  display: flex;
-  margin-top: 16px;
-  visibility: hidden;
-  height: 28px;
+.rotate {
+  transform: rotate(180deg);
 }
 
-.delete-button-wrapper button {
-  background: none;
+/* Grab & Drag */
+
+.handle-wrapper {
+  position: absolute;
+  display: block;
+  visibility: hidden;
+  width: 24px;
+  height: 24px;
+  right: 100%;
+  margin-right: 8px;
+  cursor: grab;
+}
+
+.handle-wrapper:before {
+  visibility: visible;
+  content: "";
+  position: absolute;
+  left: -8px;
+  right: -8px;
+  top: -8px;
+  bottom: -8px;
+}
+
+.handle-wrapper:before:hover .handle-wrapper {
+  visibility: visible;
+}
+
+.section-top-wrapper:hover .handle-wrapper {
+  visibility: visible;
+}
+
+.drag-indicator-icon {
+  fill: black;
+  fill-opacity: 0.54;
+  cursor: grab;
+}
+
+/* Delete */
+
+.delete-button {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  width: 24px;
+  height: 24px;
+  left: 100%;
+  margin-left: 8px;
+  cursor: pointer;
+  background-color: transparent;
   border: none;
 }
+.delete-button:before {
+  visibility: visible;
+  content: "";
+  position: absolute;
+  left: -8px;
+  right: -8px;
+  top: -8px;
+  bottom: -8px;
+}
 
-.section-wrapper:hover > .delete-button-wrapper {
+.delete-button:before:hover .delete-button {
+  visibility: visible;
+}
+
+.section-top-wrapper:hover .delete-button {
   visibility: visible;
 }
 
 .delete-icon {
-  fill: #2f80ed;
+  fill: black;
+  fill-opacity: 0.54;
+  height: 24px;
+  width: 24px;
 }
 </style>
