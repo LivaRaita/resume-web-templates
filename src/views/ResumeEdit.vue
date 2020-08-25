@@ -102,6 +102,7 @@ export default {
   width: 50%;
   padding: 24px;
   max-width: 700px;
+  margin: 48px;
 }
 
 .resume-section {
