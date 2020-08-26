@@ -89,6 +89,7 @@ export default {
   flex-direction: column;
   width: 100%;
   margin-bottom: 12px;
+  background-color: white;
 }
 
 .section-outline {

@@ -17,12 +17,18 @@
       <!-- Resume sections -->
       <div class="resume-section">
         <h3 class="group-heading">Websites & Social Links</h3>
-        <WebsitesSocialLinks
-          v-for="item in websitesSocialLinks"
-          :key="item.id"
-          :item="item"
-          @removeItem="removeItem(item)"
-        ></WebsitesSocialLinks>
+        <draggable
+          v-model="websitesSocialLinks"
+          @start="drag = true"
+          @end="drag = false"
+        >
+          <WebsitesSocialLinks
+            v-for="item in websitesSocialLinks"
+            :key="item.id"
+            :item="item"
+            @removeItem="removeItem(item)"
+          ></WebsitesSocialLinks>
+        </draggable>
         <button class="add-item-button" @click="addLink">+ Add link</button>
       </div>
     </div>
@@ -46,6 +52,8 @@
 </template>
 
 <script>
+import draggable from "vuedraggable";
+
 import WebsitesSocialLinks from "../components/WebsitesSocialLinks.vue";
 
 export default {
@@ -74,7 +82,8 @@ export default {
     }
   },
   components: {
-    WebsitesSocialLinks
+    WebsitesSocialLinks,
+    draggable
   }
 };
 </script>
