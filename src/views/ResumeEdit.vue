@@ -21,15 +21,22 @@
           v-model="websitesSocialLinks"
           @start="drag = true"
           @end="drag = false"
+          ghost-class="ghost"
         >
-          <WebsitesSocialLinks
-            v-for="(item, index) in websitesSocialLinks"
-            :key="index"
-            :item="item"
-            @removeItem="removeItem(item)"
-            @updateLabel="updateLabel(item.label)"
-            @updateLink="updateLink(item.link)"
-          ></WebsitesSocialLinks>
+          <transition-group
+            type="transition"
+            :name="!drag ? 'flip-list' : null"
+          >
+            <WebsitesSocialLinks
+              v-for="(item, index) in websitesSocialLinks"
+              :key="index"
+              :item="item"
+              :drag="drag"
+              @removeItem="removeItem(item)"
+              @updateLabel="updateLabel(item.label)"
+              @updateLink="updateLink(item.link)"
+            ></WebsitesSocialLinks>
+          </transition-group>
         </draggable>
         <button class="add-item-button" @click="addLink">+ Add link</button>
       </div>
@@ -64,8 +71,8 @@ export default {
       showPanel: false,
       fullName: "",
       jobTitle: "",
-      websitesSocialLinks: []
-      // nextItemId: 0
+      websitesSocialLinks: [],
+      drag: false
     };
   },
   mounted() {
@@ -246,5 +253,14 @@ export default {
 .resume-section .add-item-button:hover {
   background-color: #f4f6f9;
   border-radius: 4px;
+}
+
+.flip-list-move {
+  transition: transform 0.5s;
+}
+
+.ghost {
+  opacity: 0.5;
+  background: #c8ebfb;
 }
 </style>

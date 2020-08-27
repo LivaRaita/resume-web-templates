@@ -43,6 +43,7 @@
             viewBox="0 0 24 24"
             width="24"
             class="delete-icon"
+            :class="!drag ? 'hidden' : null"
           >
             <path d="M0 0h24v24H0V0z" fill="none" />
             <path
@@ -76,7 +77,7 @@
 
 <script>
 export default {
-  props: ["item"],
+  props: ["item", "drag"],
   data() {
     return {
       showPanel: false
@@ -255,5 +256,9 @@ export default {
   fill-opacity: 0.54;
   height: 24px;
   width: 24px;
+}
+
+.hidden {
+  visibility: hidden;
 }
 </style>
