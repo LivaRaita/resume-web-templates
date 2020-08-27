@@ -23,10 +23,12 @@
           @end="drag = false"
         >
           <WebsitesSocialLinks
-            v-for="item in websitesSocialLinks"
-            :key="item.id"
+            v-for="(item, index) in websitesSocialLinks"
+            :key="index"
             :item="item"
             @removeItem="removeItem(item)"
+            @updateLabel="updateLabel(item.label)"
+            @updateLink="updateLink(item.link)"
           ></WebsitesSocialLinks>
         </draggable>
         <button class="add-item-button" @click="addLink">+ Add link</button>
@@ -62,23 +64,53 @@ export default {
       showPanel: false,
       fullName: "",
       jobTitle: "",
-      websitesSocialLinks: [],
-      nextItemId: 0
+      websitesSocialLinks: []
+      // nextItemId: 0
     };
+  },
+  mounted() {
+    if (localStorage.getItem("websitesSocialLinks")) {
+      try {
+        this.websitesSocialLinks = JSON.parse(
+          localStorage.getItem("websitesSocialLinks")
+        );
+      } catch (err) {
+        localStorage.removeItem("websitesSocialLinks");
+      }
+    }
   },
   methods: {
     addLink() {
       this.websitesSocialLinks.push({
-        id: this.nextItemId++,
+        // id: this.nextItemId++,
         label: "",
         link: ""
       });
+      this.saveLinks();
+    },
+    updateLabel(value) {
+      this.websitesSocialLinks.label = value;
+      this.saveLinks();
+    },
+    updateLink(value) {
+      this.websitesSocialLinks.link = value;
+      this.saveLinks();
     },
     removeItem(item) {
       this.websitesSocialLinks.splice(
         this.websitesSocialLinks.indexOf(item),
         1
       );
+      this.saveLinks();
+    },
+    saveLinks() {
+      const parsed = JSON.stringify(this.websitesSocialLinks);
+      localStorage.setItem("websitesSocialLinks", parsed);
+    }
+  },
+  watch: {
+    websitesSocialLinks(val) {
+      this.saveLinks(val);
     }
   },
   components: {
@@ -96,7 +128,15 @@ export default {
 
 .wrapper {
   display: flex;
+  flex-direction: row;
 }
+
+@media (max-width: 1245px) {
+  .preview {
+    display: none;
+  }
+}
+
 .form-container {
   display: flex;
   flex-direction: column;

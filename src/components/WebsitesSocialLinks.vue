@@ -55,11 +55,19 @@
       <div class="row" v-if="showPanel">
         <div class="form-group">
           <label for="">Label</label>
-          <input type="text" v-model="item.label" />
+          <input
+            type="text"
+            v-model="item.label"
+            @blur="updateLabel(item.label)"
+          />
         </div>
         <div class="form-group">
           <label for="">Link</label>
-          <input type="text" v-model="item.link" />
+          <input
+            type="text"
+            v-model="item.link"
+            @blur="updateLink(item.link)"
+          />
         </div>
       </div>
     </div>
@@ -77,6 +85,12 @@ export default {
   methods: {
     deleteItem(item) {
       this.$emit("removeItem", { item });
+    },
+    updateLabel(value) {
+      this.$emit("updateLabel", { value });
+    },
+    updateLink(value) {
+      this.$emit("updateLink", { value });
     }
   }
 };
