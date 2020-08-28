@@ -29,6 +29,7 @@
           viewBox="0 0 24 24"
           fill="black"
           class="drag-indicator-icon"
+          :class="drag ? 'hidden' : null"
         >
           <path d="M0 0h24v24H0V0z" fill="none" />
           <path
@@ -43,7 +44,7 @@
             viewBox="0 0 24 24"
             width="24"
             class="delete-icon"
-            :class="!drag ? 'hidden' : null"
+            :class="drag ? 'hidden' : null"
           >
             <path d="M0 0h24v24H0V0z" fill="none" />
             <path
@@ -92,7 +93,7 @@ export default {
     },
     updateLink(value) {
       this.$emit("updateLink", { value });
-    }
+    },
   }
 };
 </script>
@@ -256,6 +257,10 @@ export default {
   fill-opacity: 0.54;
   height: 24px;
   width: 24px;
+}
+
+.sortable-chosen .delete-icon {
+  fill: transparent;
 }
 
 .hidden {

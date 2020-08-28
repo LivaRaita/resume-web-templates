@@ -19,8 +19,8 @@
         <h3 class="group-heading">Websites & Social Links</h3>
         <draggable
           v-model="websitesSocialLinks"
-          @start="drag = true"
-          @end="drag = false"
+          @start="onStart"
+          @end="onDragEnd"
           ghost-class="ghost"
         >
           <transition-group
@@ -72,7 +72,8 @@ export default {
       fullName: "",
       jobTitle: "",
       websitesSocialLinks: [],
-      drag: false
+      drag: false,
+      move: false
     };
   },
   mounted() {
@@ -113,10 +114,32 @@ export default {
     saveLinks() {
       const parsed = JSON.stringify(this.websitesSocialLinks);
       localStorage.setItem("websitesSocialLinks", parsed);
+    },
+    onDragEnd: function() {
+      this.drag = false;
+      const className = "grabbing";
+      const html = document.getElementsByTagName("html").item(0);
+      if (html && new RegExp(className).test(html.className) === true) {
+        // Remove className with the added space (from setClassToHTMLElement)
+        html.className = html.className.replace(
+          new RegExp(" " + className),
+          ""
+        );
+        // Remove className without added space (just in case)
+        html.className = html.className.replace(new RegExp(className), "");
+      }
+    },
+    onStart: function() {
+      this.drag = true;
+      const className = "grabbing";
+      const html = document.getElementsByTagName("html").item(0);
+      if (html && new RegExp(className).test(html.className) === false) {
+        html.className += " " + className; // use a space in case there are other classNames
+      }
     }
   },
   watch: {
-    websitesSocialLinks(val) {
+    webitesSocialLinks(val) {
       this.saveLinks(val);
     }
   },
@@ -128,9 +151,8 @@ export default {
 </script>
 
 <style>
-[placeholder]:empty::before {
-  content: attr(placeholder);
-  color: #000;
+.grabbing * {
+  cursor: grabbing !important;
 }
 
 .wrapper {
