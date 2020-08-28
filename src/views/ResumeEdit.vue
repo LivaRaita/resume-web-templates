@@ -22,6 +22,9 @@
           @start="onStart"
           @end="onDragEnd"
           ghost-class="ghost"
+          filter=".ignore-draggable"
+          :forceFallback="true"
+          :preventOnFilter="false"
         >
           <transition-group
             type="transition"
@@ -285,4 +288,5 @@ export default {
   opacity: 0.5;
   background: #c8ebfb;
 }
+
 </style>

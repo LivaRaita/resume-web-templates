@@ -93,7 +93,7 @@ export default {
     },
     updateLink(value) {
       this.$emit("updateLink", { value });
-    },
+    }
   }
 };
 </script>
@@ -259,9 +259,9 @@ export default {
   width: 24px;
 }
 
-.sortable-chosen .delete-icon {
+/* .sortable-chosen .delete-icon {
   fill: transparent;
-}
+} */
 
 .hidden {
   visibility: hidden;
