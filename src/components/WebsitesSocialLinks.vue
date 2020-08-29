@@ -2,7 +2,7 @@
   <div class="section-wrapper section-outline">
     <div class="section-top-wrapper">
       <div class="section-top" @click="showPanel = !showPanel">
-        <div>
+        <div class="detail-preview">
           <h2 placeholder="(Not specified)">{{ item.label }}</h2>
           <p v-show="item.link">{{ item.link }}</p>
         </div>
@@ -136,6 +136,10 @@ export default {
   width: 100%;
 }
 
+/* .detail-preview {
+  margin-left: 16px;
+} */
+
 .section-top h2 {
   font-size: 14px;
   line-height: 20px;
@@ -147,6 +151,15 @@ export default {
   font-size: 12px;
   line-height: 20px;
   color: #646464;
+}
+
+.section-top:hover .arrow-icon {
+  fill: #2f80ed;
+  fill-opacity: 1;
+}
+
+.section-top:hover h2 {
+  color: #2f80ed;
 }
 
 .row {
@@ -263,6 +276,11 @@ export default {
   fill-opacity: 0.54;
   height: 24px;
   width: 24px;
+}
+
+.delete-button:hover .delete-icon {
+  fill: #2f80ed;
+  fill-opacity: 1;
 }
 
 /* .sortable-chosen .delete-icon {
