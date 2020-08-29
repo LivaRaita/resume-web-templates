@@ -99,6 +99,12 @@ export default {
 </script>
 
 <style>
+[placeholder]:empty::before {
+  content: attr(placeholder);
+  color: #000;
+  cursor: text;
+}
+
 .section-wrapper {
   position: relative;
   display: block;
