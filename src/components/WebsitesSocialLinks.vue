@@ -223,6 +223,12 @@ export default {
   bottom: -8px;
 }
 
+@media (hover: none) {
+  .handle-wrapper {
+    visibility: visible;
+  }
+}
+
 .handle-wrapper:before:hover .handle-wrapper {
   visibility: visible;
 }
@@ -253,6 +259,7 @@ export default {
   background-color: transparent;
   border: none;
 }
+
 .delete-button:before {
   visibility: visible;
   content: "";
@@ -261,6 +268,12 @@ export default {
   right: -8px;
   top: -8px;
   bottom: -8px;
+}
+
+@media (hover: none) {
+  .delete-button {
+    visibility: visible;
+  }
 }
 
 .delete-button:before:hover .delete-button {
@@ -283,9 +296,9 @@ export default {
   fill-opacity: 1;
 }
 
-/* .sortable-chosen .delete-icon {
+.sortable-chosen .delete-icon {
   fill: transparent;
-} */
+}
 
 .hidden {
   visibility: hidden;

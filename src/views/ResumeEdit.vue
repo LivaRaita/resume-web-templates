@@ -75,8 +75,7 @@ export default {
       fullName: "",
       jobTitle: "",
       websitesSocialLinks: [],
-      drag: false,
-      move: false
+      drag: false
     };
   },
   mounted() {
@@ -142,7 +141,7 @@ export default {
     }
   },
   watch: {
-    webitesSocialLinks(val) {
+    websitesSocialLinks(val) {
       this.saveLinks(val);
     }
   },
@@ -288,5 +287,4 @@ export default {
   opacity: 0.5;
   background: #c8ebfb;
 }
-
 </style>
